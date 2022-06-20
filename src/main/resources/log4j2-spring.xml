@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Appenders>
+        <Console name="STDOUT" target="SYSTEM_OUT" direct="true">
+            <PatternLayout>
+                <pattern>
+                    {"timestamp": "%d", "level": "%p", "logger": "%fqcn", "correlationID": "%X{correlation_id}", "transactionID": "%X{transaction_id}", "thread": "%t", "message": "%enc{%m}{JSON}"%notEmpty{, "data": %X{data}}}%n
+                </pattern>
+            </PatternLayout>
+
+        </Console>
+    </Appenders>
+
+    <Loggers>
+        <!-- LOG everything at INFO level -->
+        <Root level="INFO">
+            <AppenderRef ref="STDOUT" />
+        </Root>
+    </Loggers>
+</Configuration>
